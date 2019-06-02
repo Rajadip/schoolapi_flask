@@ -1,2 +1,6 @@
 instance/
 .idea/*
+*.pyc
+*.swp
+__pycache__/*
+.gitignore
