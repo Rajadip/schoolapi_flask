@@ -20,9 +20,12 @@ class BaseModel(db.Model):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
 
 
-class user(BaseModel):
+class User(BaseModel):
     first_name = db.Column(db.VARCHAR(40))
     last_name = db.Column(db.VARCHAR(40))
-    email = db.Column(db.VARCHAR(40))
+    email = db.Column(db.VARCHAR(40), unique=True)
     password = db.Column(db.VARCHAR(90))
-    __table_args__ = (db.UniqueConstraint('email', name='email_unique'))
+    phone = db.Column(db.VARCHAR(12))
+
+    def __repr__(self):
+        return "<%s>" % self.email
