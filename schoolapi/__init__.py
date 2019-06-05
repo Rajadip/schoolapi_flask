@@ -15,4 +15,8 @@ def create_app():
     db.init_app(app)
     migrate.init_app(app=app)
 
+    with app.app_context():
+        from schoolapi.user.route import user_blueprint
+        app.register_blueprint(user_blueprint)
+
     return app
